@@ -1,4 +1,4 @@
-path: images  # dataset root dir
+path: sdogs  # dataset root dir
 train: train.txt  # train images (relative to 'path') 118287 images
 val: valid.txt  # train images (relative to 'path') 5000 images
 
