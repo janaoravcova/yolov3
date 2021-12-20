@@ -238,7 +238,7 @@ def run(data,
     stats = [np.concatenate(x, 0) for x in zip(*stats)]  # to numpy
     if len(stats) and stats[0].any():
         p, r, ap, f1, ap_class = ap_per_class(*stats, plot=plots, save_dir=save_dir, names=names)
-        ap50, ap = ap[:, 0], ap.mean(1)  # AP@0.5, AP@0.5:0.95
+        ap50 = ap[:, 0] # AP@0.5, AP@0.5:0.95
         ap25 = ap[:, 10]
         map25 = ap25.mean()
         ap75 = ap[:, 14]
