@@ -239,6 +239,7 @@ def run(data,
     if len(stats) and stats[0].any():
         p, r, ap, f1, ap_class = ap_per_class(*stats, plot=plots, save_dir=save_dir, names=names)
         LOGGER.info("ap shape " + str(ap.shape))
+        LOGGER.info(ap[0, :])
         ap50 = ap[:, 0] # AP@0.5, AP@0.5:0.95
         ap25 = ap[:, 10]
         map25 = ap25.mean()
