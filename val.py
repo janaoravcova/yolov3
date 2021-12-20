@@ -238,11 +238,13 @@ def run(data,
     stats = [np.concatenate(x, 0) for x in zip(*stats)]  # to numpy
     if len(stats) and stats[0].any():
         p, r, ap, f1, ap_class = ap_per_class(*stats, plot=plots, save_dir=save_dir, names=names)
+        LOGGER.info("ap shape " + str(ap.shape))
         ap50 = ap[:, 0] # AP@0.5, AP@0.5:0.95
         ap25 = ap[:, 10]
         map25 = ap25.mean()
         ap75 = ap[:, 14]
         map75 = ap75.mean()
+        ap = ap.mean(1)
         mp, mr, map50, map = p.mean(), r.mean(), ap50.mean(), ap.mean()
         nt = np.bincount(stats[3].astype(np.int64), minlength=nc)  # number of targets per class
     else:
